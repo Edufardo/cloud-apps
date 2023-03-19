@@ -11,7 +11,7 @@
     
     <groupId>es.codeurjc.mastercloudapps.reactive</groupId>
     <artifactId>toposervice</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>v1</version>
     
     <properties>
         <java.version>17</java.version>
