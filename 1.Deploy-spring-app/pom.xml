@@ -8,8 +8,8 @@
 		<version>2.7.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>es.codeurjc.mca</groupId>
-	<artifactId>practica_1_cloud_ordinaria</artifactId>
+	<groupId>es.codeurjc.mca.cloud</groupId>
+	<artifactId>eduardo.larraz</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Práctica 1 Computación en la nube - Convocatoria Ordinaria</name>
 	<description>Demo project for Spring Boot</description>

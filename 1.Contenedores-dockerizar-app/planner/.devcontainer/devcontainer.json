@@ -11,9 +11,7 @@
 			"installMaven": "true",
 			"installGradle": "false"
 		}
-	},
-
-	"runArgs": ["--network=host"]
+	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
