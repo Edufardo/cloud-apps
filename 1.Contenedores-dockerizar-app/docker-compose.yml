@@ -1,0 +1,53 @@
+services: 
+  server:
+    image: edufardo/server-pr-docker:v1
+    ports:
+      - 8080:8080
+    environment:
+      - QUARKUS_DATASOURCE_URL=jdbc:mysql://mysql/eoloplantsDB
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+    depends_on:
+      mysql: 
+        condition: service_healthy
+  weatherservice: 
+    image: edufardo/weatherservice-pr-docker:v1
+    ports: 
+      - 9090:9090
+  toposervice: 
+    image: edufardo/toposervice:v1
+    ports:
+      - 8181:8181
+    environment:
+      - MONGODB_HOST=mongodb
+      - MONGODB_PORT=27017
+      - MONGODB_COLLECTION=topo
+    depends_on:
+      - mongodb
+    restart: on-failure
+  planner: 
+    image: edufardo/planner-multistage:latest
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=eoloplantsDB
+    volumes:
+      - ./mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      start_period: 10s
+      retries: 5
+  mongodb:
+    image: mongo:5.0-focal
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db
+  rabbitmq:
+    image: rabbitmq:3.11
+    ports:
+      - 5672:5672
+    volumes:
+      - ./volume/mabbitmq/data:/data
