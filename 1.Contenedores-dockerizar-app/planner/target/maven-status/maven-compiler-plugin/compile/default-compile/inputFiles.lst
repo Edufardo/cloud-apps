@@ -1,0 +1,14 @@
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/src/main/java/es/codeurjc/mastercloudapps/planner/clients/WeatherClient.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/src/main/java/es/codeurjc/mastercloudapps/planner/clients/TopoClient.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/target/generated-sources/protobuf/java/es/codeurjc/mastercloudapps/planner/grpc/WeatherOrBuilder.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/src/main/java/es/codeurjc/mastercloudapps/planner/clients/NotificationClient.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/target/generated-sources/protobuf/java/es/codeurjc/mastercloudapps/planner/grpc/GetWeatherRequest.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/target/generated-sources/protobuf/java/es/codeurjc/mastercloudapps/planner/grpc/WeatherServiceOuterClass.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/src/main/java/es/codeurjc/mastercloudapps/planner/service/PlannerService.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/target/generated-sources/protobuf/java/es/codeurjc/mastercloudapps/planner/grpc/Weather.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/src/main/java/es/codeurjc/mastercloudapps/planner/Application.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/src/main/java/es/codeurjc/mastercloudapps/planner/models/Eoloplant.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/src/main/java/es/codeurjc/mastercloudapps/planner/models/EoloplantCreationRequest.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/src/main/java/es/codeurjc/mastercloudapps/planner/models/LandscapeResponse.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/target/generated-sources/protobuf/java/es/codeurjc/mastercloudapps/planner/grpc/GetWeatherRequestOrBuilder.java
+/workspaces/cloud-apps/1.Contenedores-dockerizar-app/planner/target/generated-sources/protobuf/grpc-java/es/codeurjc/mastercloudapps/planner/grpc/WeatherServiceGrpc.java

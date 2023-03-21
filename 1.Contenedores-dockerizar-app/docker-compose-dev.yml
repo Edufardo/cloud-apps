@@ -1,49 +1,25 @@
 services: 
-  server:
-    ports:
-      - 8080:8080
-    environment:
-      - MYSQL_URL=jdbc:mysql://db/eoloplantsDB
-      - MYSQL_USERNAME=root
-      - MYSQL_PASSWORD=password
-    depends_on:
-      mysql:
-        condition: service_healthy
-  planner:
-    environment:
-      - MONGODB_HOST=db
-      - MONGODB_PORT=27017
-      - MONGODB_COLLECTION=posts
-    command: [ "./wait-for-it.sh", "" ]
-  toposervice:
-
-  weatherservice:
-
-  rabbitmq:
-    image: rabittmq:3.11
-    ports:
-      - 15672:15672
-      - 5671:5671
-    environment:
-      RABBITMQ_DEFAULT_PASS: guest
-      RABBITMQ_DEFAULT_USER: guest
-    volumes:
-      - ./volume/mabbitmq/data:/data
-
   mysql:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=eoloplantsDB
-    healthcheck:
-      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
-      interval: 5s
-      timeout: 5s
-      start_period: 10s
-      retries: 5
     volumes:
       - ./mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      start_period: 10s
+      retries: 5
   mongodb:
     image: mongo:5.0-focal
+    ports:
+      - 27017:27017
     volumes:
       - ./mongo:/data/db
+  rabbitmq:
+    image: rabbitmq:3.11
+    ports:
+      - 5672:5672
+    volumes:
+      - ./volume/mabbitmq/data:/data
