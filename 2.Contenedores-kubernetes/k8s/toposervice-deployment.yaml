@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toposervice
+spec:
+  selector:
+    matchLabels:
+      app: toposervice
+  template:
+    metadata:
+      labels:
+        app: toposervice
+    spec:
+      containers:
+      - name: toposervice
+        image: mastercloudapps/toposervice:v1.23
+        env:
+            - name: SPRING_DATA_MONGODB_HOST
+              value: mongodb
+            - name: SPRING_DATA_MONGODB_PORT
+              value: "27017"
+            - name: SPRING_DATA_MONGODB_DATABASE
+              value: topo
+            - name: SPRING_DATA_MONGODB_AUTHENTICATION
+              value: admin
+            - name: SPRING_DATA_MONGODB_USERNAME
+              value: root
+            - name: SPRING_DATA_MONGODB_PASSWORD
+              value: password
+        ports:
+        - containerPort: 8181
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: planner-service
+spec:
+  type: ClusterIP
+  selector:
+    app: planner-service
+  ports:
+  - name: planner-service-port
+    port: 8181
