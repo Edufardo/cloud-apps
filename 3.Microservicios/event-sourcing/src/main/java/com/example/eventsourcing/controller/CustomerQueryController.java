@@ -21,7 +21,7 @@ public class CustomerQueryController {
         this.queryGateway = queryGateway;
     }
 
-    @GetMapping
+    @GetMapping()
     public CompletableFuture<List<CustomerInfo>> listCustomers() {
         return queryGateway.query(new AllCustomersQuery(), ResponseTypes.multipleInstancesOf(CustomerInfo.class));
     }
