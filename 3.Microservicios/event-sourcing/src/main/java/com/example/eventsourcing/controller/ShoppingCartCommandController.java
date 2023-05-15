@@ -1,7 +1,13 @@
 package com.example.eventsourcing.controller;
 
+import java.util.UUID;
+import java.util.concurrent.Future;
+
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.eventsourcing.coreapi.RegisterShoppingCartCommand;
+import com.example.eventsourcing.coreapi.ShoppingCartRegistration;
 
 @RestController
 @RequestMapping("/api/carts")
@@ -11,6 +17,16 @@ public class ShoppingCartCommandController {
 
     public ShoppingCartCommandController(CommandGateway commandGateway){
         this.commandGateway = commandGateway;
+    }
+
+    @PostMapping()
+    public Future<Void> createShoppingCart(@RequestBody ShoppingCartRegistration shoppingCart) {
+        return commandGateway.send(
+                new RegisterShoppingCartCommand(
+                        shoppingCart.getCartId()!=null?shoppingCart.getCartId():UUID.randomUUID().toString(),
+                        shoppingCart.getCustomerId()
+                )
+        );
     }
     // @PostMapping("/{cartId}/product/{productId}")
     // public String addItem(@PathVariable String cartId, @PathVariable String productId, @RequestParam int quantity) {
