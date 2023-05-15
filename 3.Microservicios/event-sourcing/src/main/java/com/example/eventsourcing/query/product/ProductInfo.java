@@ -1,4 +1,4 @@
-package com.example.eventsourcing.model.product;
+package com.example.eventsourcing.query.product;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package com.example.eventsourcing.model.customer;
+package com.example.eventsourcing.query.customer;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

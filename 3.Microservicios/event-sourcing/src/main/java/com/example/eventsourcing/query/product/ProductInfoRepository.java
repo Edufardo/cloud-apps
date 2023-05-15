@@ -1,4 +1,4 @@
-package com.example.eventsourcing.model.product;
+package com.example.eventsourcing.query.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

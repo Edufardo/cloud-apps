@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/carts")
 public class ShoppingCartCommandController {
     
-    // private final CommandGateway commandGateway;
+    private final CommandGateway commandGateway;
 
+    public ShoppingCartCommandController(CommandGateway commandGateway){
+        this.commandGateway = commandGateway;
+    }
     // @PostMapping("/{cartId}/product/{productId}")
     // public String addItem(@PathVariable String cartId, @PathVariable String productId, @RequestParam int quantity) {
     //     ShoppingCart shoppingCart = getShoppingCart(cartId);

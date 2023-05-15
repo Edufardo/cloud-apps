@@ -1,30 +1,27 @@
 package com.example.eventsourcing.controller;
 
+import java.util.concurrent.CompletableFuture;
+
+import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.eventsourcing.coreapi.ShoppingCartQuery;
+import com.example.eventsourcing.query.shoppingCart.ShoppingCartInfo;
 
 @RestController
 @RequestMapping("/api/carts")
 public class ShoppingCartQueryController {
-    // private final QueryGateway queryGateway;
     
-    // @GetMapping
-    // public List<ShoppingCart> listAllCarts(){
-    //     return repository.findAll();
-    // }
+    private final QueryGateway queryGateway;
 
-    // @GetMapping("/{cartId}")
-    // public ShoppingCart getCart(@PathVariable String cartId) {
-    //     return repository.findById(cartId)
-    //             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Shopping Cart " + cartId));
-    // }
-
-    // private Optional<CartItem> getCartItem(ShoppingCart shoppingCart, String productId) {
-    //     Optional<CartItem> cartItem = shoppingCart.getItems()
-    //             .stream()
-    //             .filter(item -> item.getProductId().equalsIgnoreCase(productId))
-    //             .findFirst();
-    //     return cartItem;
-    // }
+    public ShoppingCartQueryController(QueryGateway queryGateway){
+        this.queryGateway = queryGateway;
+    }
+    
+    @GetMapping("/{cartId}")
+    public CompletableFuture<ShoppingCartInfo> getShoppingCart(@PathVariable String cartId) {
+        return queryGateway.query(new ShoppingCartQuery(cartId), ResponseTypes.instanceOf(ShoppingCartInfo.class));
+    }
 
 }

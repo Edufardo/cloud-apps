@@ -1,4 +1,4 @@
-package com.example.eventsourcing.model.shoppingCart;
+package com.example.eventsourcing.query.shoppingCart;
 
 import java.util.ArrayList;
 import java.util.List;
